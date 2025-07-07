@@ -8,7 +8,6 @@ const PostCard = ({ post }) => {
     <div className="post-card">
       <Link to={`/posts/${post.id}`}>
         <p>{post.content}</p>
-        <p>{post.created}</p>
       </Link>
     </div>
   );

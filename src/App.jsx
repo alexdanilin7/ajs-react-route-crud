@@ -11,8 +11,7 @@ function App() {
     <Router>
       <div className="app">
         <header>
-          <h1>Блог</h1>
-          <nav>
+          <nav className="nav">
             <button onClick={() => window.location.href = '/posts/new'}>Создать пост</button>
           </nav>
         </header>

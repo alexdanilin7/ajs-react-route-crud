@@ -5,6 +5,26 @@ body {
   padding: 0;
 }
 
+header{
+  display: relative;
+  background-color: #f9f9f9;
+  height: 30px;
+  margin-bottom: 20px;
+  align-items: center;
+}
+.nav{
+  display: flex;
+  background-color: #f9f9f9;
+  margin-bottom: 10px;
+  height: 20px;
+  justify-self: right;
+}
+button{
+  background-color: blue;
+  color: #ffffff;
+  border: none;
+  margin-right: 10px;
+}
 .app {
   max-width: 800px;
   margin: 0 auto;

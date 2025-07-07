@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { deletePost, updatePost } from '../services/api';
+import { fetchPostById, deletePost, updatePost } from '../services/api';
 
 
 const PostDetails = () => {
@@ -10,14 +10,19 @@ const PostDetails = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [editedContent, setEditedContent] = useState('');
 
-  useEffect(() => {
-    setPost({
-      id: postId,
-      content: 'Пример поста',
-      created: new Date().toISOString(),
-    });
-  }, [postId]);
+ 
+   useEffect(() => {
+    const loadPost = async () => {
+      const data = await fetchPostById(id);
+      console.log("d", data);
+      setPost(data.post);
+      setEditedContent(data.content);
+    };
 
+    loadPost();
+  }, [id]);
+
+  console.log(post);
   const handleDelete = async () => {
     try {
       await deletePost(postId);
@@ -65,7 +70,6 @@ const PostDetails = () => {
       ) : (
         <div>
           <p>{post?.content}</p>
-          <p>{post?.created}</p>
           <button onClick={handleEdit}>Изменить</button>
           <button onClick={handleDelete}>Удалить</button>
         </div>

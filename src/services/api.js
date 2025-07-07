@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:7070';
+const API_URL = 'http://localhost:5000';
 
 export const fetchPosts = async () => {
   try {
@@ -8,6 +8,18 @@ export const fetchPosts = async () => {
     return response.data;
   } catch (error) {
     console.error('Error fetching posts:', error);
+    throw error;
+  }
+};
+
+// Получить один пост по ID
+export const fetchPostById = async (postId) => {
+  try {
+    const response = await axios.get(`${API_URL}/posts/${postId}`);
+    console.log(response);
+    return response.data;
+  } catch (error) {
+    console.error(`Error fetching post with ID ${postId}:`, error);
     throw error;
   }
 };
